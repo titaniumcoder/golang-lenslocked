@@ -3,8 +3,9 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"os"
 
-	"github.com/go-chi/chi/v5"
+	"github.com/gorilla/handlers"
 )
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
@@ -39,14 +40,10 @@ func faqHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	r := chi.NewRouter()
-	r.Get("/", homeHandler)
-	r.Get("/contact", contactHandler)
-	r.Get("/faq", faqHandler)
-	r.NotFound(func(w http.ResponseWriter, r *http.Request) {
-		http.Error(w, "Page not found", http.StatusNotFound)
-	})
-
+	r := http.NewServeMux()
+	r.HandleFunc("GET /", homeHandler)
+	r.HandleFunc("GET /contact", contactHandler)
+	r.HandleFunc("GET /faq", faqHandler)
 	fmt.Println("Starting the server on :3000...")
-	http.ListenAndServe(":3000", r)
+	http.ListenAndServe(":3000", handlers.LoggingHandler(os.Stdout, r))
 }
