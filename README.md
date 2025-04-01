@@ -15,5 +15,5 @@ I am with golang.
   * Backend: Go and Rest
   * Frontend: I want to add some dynamics using htmx may be svelte but more for preparing the build
 - Deploy / run
-  * provider: not yet sure
+  * provider: fly.dev
   * Action: Github Actions
