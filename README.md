@@ -13,7 +13,7 @@ I am with golang.
   * I will use an S3 storage for this
 - Frontend / Backend
   * Backend: Go and Rest
-  * Frontend: I want to add some dynamics using svelte
+  * Frontend: I want to add some dynamics using htmx may be svelte but more for preparing the build
 - Deploy / run
   * provider: not yet sure
   * Action: Github Actions
