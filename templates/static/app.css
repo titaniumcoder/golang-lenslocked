@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+h1 {
+  @apply py-4 text-4xl font-semibold tracking-tight;
+}

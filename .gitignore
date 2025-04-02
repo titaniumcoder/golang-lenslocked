@@ -26,3 +26,10 @@ go.work.sum
 
 # Temp directory
 /tmp/
+
+# Node modules
+/node_modules/
+
+# final.css
+/templates/static/final.css
+

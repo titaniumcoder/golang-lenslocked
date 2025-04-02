@@ -28,3 +28,9 @@
 # Temp directory
 tmp
 fly.toml
+
+# Node modules
+**/node_modules/
+
+# Final CSS
+**/templates/static/final.css

@@ -5,7 +5,6 @@ I am with golang.
 
 ## Extensions / Going "off" from the tutorial
 
-- Database: I want to use Supabase for this
 - Auth: While the tutorial uses password authentication, I will keep it in the code for demo purposes, but the app will only have
   * OAuth
   * Passwordless
