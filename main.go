@@ -14,14 +14,14 @@ import (
 func main() {
 	r := http.NewServeMux()
 
-	homeTpl := views.Must(views.ParseFS(templates.FS, "layout-page.html", "home-page.html"))
-	contactTpl := views.Must(views.ParseFS(templates.FS, "layout-page.html", "contact-page.html"))
-	faqTpl := views.Must(views.ParseFS(templates.FS, "layout-page.html", "faq-page.html"))
-
-	r.HandleFunc("GET /", controllers.StaticHandler(homeTpl))
-	r.HandleFunc("GET /contact", controllers.StaticHandler(contactTpl))
-	r.HandleFunc("GET /faq", controllers.FAQ(faqTpl))
+	r.HandleFunc("GET /", controllers.StaticHandler(parsePage("home-page.html")))
+	r.HandleFunc("GET /contact", controllers.StaticHandler(parsePage("contact-page.html")))
+	r.HandleFunc("GET /faq", controllers.FAQ(parsePage("faq-page.html")))
 
 	fmt.Println("Starting the server on :3000...")
 	http.ListenAndServe(":3000", handlers.LoggingHandler(os.Stdout, r))
+}
+
+func parsePage(name string) views.Template {
+	return views.Must(views.ParseFS(templates.FS, "tailwind.html", name))
 }
