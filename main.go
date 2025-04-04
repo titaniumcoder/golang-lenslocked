@@ -14,7 +14,6 @@ import (
 )
 
 func main() {
-	fmt.Println(os.Getenv("DATABASE_URL"))
 	db, err := sql.Open("pgx", os.Getenv("DATABASE_URL"))
 	if err != nil {
 		panic(err)
