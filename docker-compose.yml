@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    container_name: postgres
+    environment:
+      POSTGRES_USER: lenslocked
+      POSTGRES_PASSWORD: lenslocked
+      POSTGRES_DB: lenslocked
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  adminer:
+    image: adminer
+    restart: always
+    container_name: adminer
+    environment:
+      ADMINER_DESIGN: "dracula"
+      ADMINER_DEFAULT_SERVER: db
+    ports:
+      - "3333:8080"
+    depends_on:
+      - db
+
+volumes:
+    postgres_data:
+      driver: local
