@@ -1,0 +1,26 @@
+{{define "page"}}
+<div class="py-12 flex justify-center">
+  <div class="px-8 py-8 bg-white rounded shadow">
+    <h1>Welcome back!</h1>
+    <form action="/users/signin" method="post">
+      {{csrfField}}
+      <div class="py-2">
+        <label for="email">Email Address</label>
+        <input name="email" id="email" type="email" required value="{{.Email}}" {{if not .Email}}autofocus{{end}}>
+      </div>
+      <div class="py-2">
+        <label for="password">Password</label>
+        <input name="password" id="password" type="password" required {{if .Email}}autofocus{{end}}>
+      </div>
+      <div class="py-4">
+        <button class="w-full py-4 px-2 bg-indigo-600 havor:bg-indigo-700 text-white rounded font-bold text-lg"
+          type="submit">Sign in</button>
+      </div>
+      <div class="py-2 w-full flex justify-between">
+        <p class="text-xs text-gray-500">Need an account? <a href="/signup" class="underline">Sign up</a></p>
+        <p class="text-xs text-gray-500"><a href="/reset-pw" class="underline">Forgot yout password?</a></p>
+      </div>
+    </form>
+  </div>
+</div>
+{{end}}

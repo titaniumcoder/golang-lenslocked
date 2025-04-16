@@ -3,6 +3,7 @@
   <div class="px-8 py-8 bg-white rounded shadow">
     <h1>Start sharing your photos today!</h1>
     <form action="/users" method="POST" class="register">
+      {{csrfField}}
       <div>
         <label for="email">Email Address</label>
         <input name="email" id="email" type="email" placeholder="Email address" required autocomplete="email"

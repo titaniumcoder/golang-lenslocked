@@ -7,17 +7,9 @@ import (
 	"github.com/titaniumcoder/golang-lenslocked/views"
 )
 
-type Static struct {
-	Template Template
-}
-
-func (static Static) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	static.Template.Execute(w, nil)
-}
-
 func StaticHandler(tpl views.Template) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		tpl.Execute(w, nil)
+		tpl.Execute(w, r, nil)
 	}
 }
 
@@ -40,6 +32,6 @@ func FAQ(tpl views.Template) http.HandlerFunc {
 		},
 	}
 	return func(w http.ResponseWriter, r *http.Request) {
-		tpl.Execute(w, questions)
+		tpl.Execute(w, r, questions)
 	}
 }
